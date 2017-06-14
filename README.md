@@ -1,4 +1,5 @@
 # rootModel
+### 详细用法及扩展请参考http://www.chjsun.top/2017/06/14/rootModel/
 ### 目的
   在项目中有时候我们需要创建一个全局的model，这个model可以在任何地方共享数据，
   而在内存中（实例）只有一个，那这个model就要用单例模式创建,
