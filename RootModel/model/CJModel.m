@@ -83,7 +83,7 @@ static JRModel *model;
         //  number类型就放@(0)
         if ([[self valueForKey:[[NSString alloc] initWithUTF8String:propertyName]] isKindOfClass:[NSNumber class]]) {
             [self setValue:@(0) forKey:[[NSString alloc] initWithUTF8String:propertyName]];
-            return;
+            continue;
         }
 
         [self setValue:nil forKey:[[NSString alloc] initWithUTF8String:propertyName]];
