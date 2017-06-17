@@ -1,4 +1,6 @@
 # rootModel
+
+### 详细用法及扩展请参考<a href="http://www.chjsun.top/2017/06/14/rootModel/" target="rootModel">www.chjsun.top/2017/06/14/rootModel</a>
 ### 目的
   在项目中有时候我们需要创建一个全局的model，这个model可以在任何地方共享数据，
   而在内存中（实例）只有一个，那这个model就要用单例模式创建,
@@ -6,12 +8,19 @@
   本工程就是为了解决这个问题而创建的
 ### 说明 
 例如
+
 	name
+	
 	sex
+	
 	sleep
+	
 	state
+	
 	run
+	
 	。。。
+	
 这些属性的值变化后，要想在任意位置使用它， 最好就是创建一个模型进行保存。最好就是使用单例
 然而使用本demo中的model
 只需要继承cjmodel即可
