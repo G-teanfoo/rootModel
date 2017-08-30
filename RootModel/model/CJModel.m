@@ -6,12 +6,14 @@
 //  Copyright © 2016年 chjsun. All rights reserved.
 //
 
-#import "JRModel.h"
+#import "CJModel.h"
+#import <objc/runtime.h>
+
 static NSMutableDictionary *storagePool;
 
-static JRModel *model;
+static CJModel *model;
 
-@implementation JRModel
+@implementation CJModel
 
 + (id)shareModel{
 
@@ -27,7 +29,8 @@ static JRModel *model;
             if ([storagePool objectForKey:modelClass]) {
                 return storagePool[modelClass];
             }else{
-                model = [[self alloc] init];
+                model = [[super alloc] init];
+                [storagePool setObject:model forKey:modelClass];
             }
         }
 
@@ -36,28 +39,28 @@ static JRModel *model;
 }
 
 //重写alloc方法，保证在使用alloc、new 去创建对象时，不产生新的对象
-+ (id)allocWithZone:(NSZone *)zone{
-    NSString *modelClass = NSStringFromClass([self class]);
-    //
-    if (storagePool == nil) {
-        storagePool = [[NSMutableDictionary alloc] init];;
-    }
-    //
-    if ([storagePool objectForKey:modelClass]) {
-        return storagePool[modelClass];
-    }else{
-        model = [[super allocWithZone:zone] init];
-        [storagePool setObject:model forKey:modelClass];
-    }
-    return model;
-}
+//+ (id)allocWithZone:(NSZone *)zone{
+//    NSString *modelClass = NSStringFromClass([self class]);
+//    //
+//    if (storagePool == nil) {
+//        storagePool = [[NSMutableDictionary alloc] init];;
+//    }
+//    //
+//    if ([storagePool objectForKey:modelClass]) {
+//        return storagePool[modelClass];
+//    }else{
+//        model = [[super allocWithZone:zone] init];
+//        [storagePool setObject:model forKey:modelClass];
+//    }
+//    return model;
+//}
 
-//    //允许copy,程序员在使用时肯定知道copy的含义，不知道请去查，留这个接口是为了某些可能需要的特殊的业务
+// //允许copy,程序员在使用时肯定知道copy的含义，不知道请去查，留这个接口是为了某些可能需要的特殊的业务
 //- (id)copyWithZone:(NSZone *)zone{
 //    return model;
 //}
 //
-//    //允许copy,程序员在使用时肯定知道mutable的含义，不知道请去查，留这个接口是为了某些可能需要的特殊的业务
+// //允许copy,程序员在使用时肯定知道mutable的含义，不知道请去查，留这个接口是为了某些可能需要的特殊的业务
 //- (id)mutableCopyWithZone:(NSZone *)zone{
 //    return model;
 //}
@@ -67,7 +70,26 @@ static JRModel *model;
     [self setValuesForKeysWithDictionary:dict];
 }
 
-//
+// 快速设置值
+- (void)setValueForJson:(NSString *)json{
+    if (json == nil) {
+        return;
+    }
+
+    NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    [self setValueForDict:dic];
+    if(err)
+    {
+        NSLog(@"json解析失败：%@",err);
+        return;
+    }
+}
+
+// 快速清空模型
 - (void)clearModelInfo{
     // 记录属性的个数
     unsigned int propertyCount = 0;
@@ -90,8 +112,8 @@ static JRModel *model;
     }
 }
 
-// 格式化对象
-- (NSDictionary *)formatModel{
+// // 模型转字典
+- (NSDictionary *)modelToDict{
 
     // 记录属性的个数
     unsigned int propertyCount = 0;
@@ -103,10 +125,11 @@ static JRModel *model;
         // 取出每一个属性
         objc_property_t property = propertys[i];
         const char *propertyName = property_getName(property);
+        
         // 将所有属性值赋值给字典
         id value = [self valueForKey:[[NSString alloc] initWithUTF8String:propertyName]];
         if (value == nil) {
-            value = @"nil";
+            value = @"";
         }
         [dict setObject:value forKey:[[NSString alloc] initWithUTF8String:propertyName]];
     }
@@ -115,6 +138,45 @@ static JRModel *model;
 
 }
 
+// 模型转json
+-(NSString *)modelToJson{
+
+    NSError *error;
+
+    // 先把对象转成字典
+    NSDictionary *dict = [self modelToDict];
+
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+
+    NSString *jsonString;
+
+    if (!jsonData) {
+
+        NSLog(@"%@",error);
+
+    }else{
+
+        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+    }
+
+    NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
+
+    NSRange range = {0, jsonString.length};
+
+    //去掉字符串中的空格
+
+    [mutStr replaceOccurrencesOfString:@" " withString:@"" options:NSLiteralSearch range:range];
+
+    NSRange range2 = {0, mutStr.length};
+
+    //去掉字符串中的换行符
+
+    [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range2];
+    
+    return mutStr;
+    
+}
 
 // 设置不存在 key 的值
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {

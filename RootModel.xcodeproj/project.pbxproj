@@ -18,6 +18,7 @@
 		9435F3331DFE4DC50068DB3C /* CJModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435F3321DFE4DC50068DB3C /* CJModel.m */; };
 		9435F3361DFE53370068DB3C /* Test1Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435F3351DFE53370068DB3C /* Test1Model.m */; };
 		9435F3391DFE53A30068DB3C /* Test2Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435F3381DFE53A30068DB3C /* Test2Model.m */; };
+		F764C39D1F569D0C00BB8406 /* Test3Model.m in Sources */ = {isa = PBXBuildFile; fileRef = F764C39C1F569D0C00BB8406 /* Test3Model.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		9435F3351DFE53370068DB3C /* Test1Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test1Model.m; sourceTree = "<group>"; };
 		9435F3371DFE53A30068DB3C /* Test2Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test2Model.h; sourceTree = "<group>"; };
 		9435F3381DFE53A30068DB3C /* Test2Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test2Model.m; sourceTree = "<group>"; };
+		F764C39B1F569D0C00BB8406 /* Test3Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test3Model.h; sourceTree = "<group>"; };
+		F764C39C1F569D0C00BB8406 /* Test3Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test3Model.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				9435F3381DFE53A30068DB3C /* Test2Model.m */,
 				9435F3031DFE4D0D0068DB3C /* ViewController.h */,
 				9435F3041DFE4D0D0068DB3C /* ViewController.m */,
+				F764C39B1F569D0C00BB8406 /* Test3Model.h */,
+				F764C39C1F569D0C00BB8406 /* Test3Model.m */,
 				9435F3061DFE4D0D0068DB3C /* Main.storyboard */,
 				9435F3091DFE4D0D0068DB3C /* Assets.xcassets */,
 				9435F30B1DFE4D0D0068DB3C /* LaunchScreen.storyboard */,
@@ -225,11 +230,12 @@
 		9435F2F21DFE4D0D0068DB3C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = chjsun;
 				TargetAttributes = {
 					9435F2F91DFE4D0D0068DB3C = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 9852S7GL84;
 					};
 					9435F3121DFE4D0D0068DB3C = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -293,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F764C39D1F569D0C00BB8406 /* Test3Model.m in Sources */,
 				9435F3391DFE53A30068DB3C /* Test2Model.m in Sources */,
 				9435F3051DFE4D0D0068DB3C /* ViewController.m in Sources */,
 				9435F3331DFE4DC50068DB3C /* CJModel.m in Sources */,
@@ -366,8 +373,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -410,8 +419,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -439,7 +450,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9852S7GL84;
 				INFOPLIST_FILE = RootModel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chjsun.RootModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -450,7 +463,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9852S7GL84;
 				INFOPLIST_FILE = RootModel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chjsun.RootModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -8,19 +8,24 @@
 //  子类中保存，
 //  思想：单例
 //  用法：继承此model，将属性声明在.h文件中即可。.m可以不写任何代码。也可以写
+//
 
 #import <Foundation/Foundation.h>
 
-@interface JRModel : NSObject
+@interface CJModel : NSObject
 /**
- *  创建共享唯一模型返回model
+ *  通过此方法可以创建全局共享唯一模型返回model
  */
 + (id)shareModel;
 
 /**
- *  通过kvc快速给属性赋值
+ *  通过kvc快速给属性赋值， dict转对象
  */
 - (void)setValueForDict:(NSDictionary *)dict;
+/**
+ *  通过kvc快速给属性赋值， json转对象
+ */
+- (void)setValueForJson:(NSString *)json;
 
 /**
  *  将所有属性值置为nil
@@ -28,8 +33,14 @@
 - (void)clearModelInfo;
 
 /**
- *  格式化对象，打印出来
+ *  格式化对象，对象转模型
  */
-- (NSDictionary *)formatModel;
+- (NSDictionary *)modelToDict;
+
+/**
+ * 格式化对象，对象转json
+ */
+-(NSString *)modelToJson;
+
 
 @end
