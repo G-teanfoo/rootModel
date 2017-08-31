@@ -11,12 +11,11 @@
 
 static NSMutableDictionary *storagePool;
 
-static CJModel *model;
-
 @implementation CJModel
 
 + (id)shareModel{
 
+    CJModel *model;
     NSString *modelClass = NSStringFromClass([self class]);
     if (storagePool != nil && [storagePool objectForKey:modelClass]) {//首先判断缓存池或缓存池是否存在
         model = storagePool[modelClass];

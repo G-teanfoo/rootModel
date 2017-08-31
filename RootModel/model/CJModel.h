@@ -15,6 +15,8 @@
 @interface CJModel : NSObject
 /**
  *  通过此方法可以创建全局共享唯一模型返回model
+ *  若想创建不是全局共享的model，请用init
+ *  全局共享的思路就是保存到内存中不被释放。
  */
 + (id)shareModel;
 

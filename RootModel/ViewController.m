@@ -62,11 +62,13 @@
     NSLog(@"判断 = %i", (test3.ff == 4.5));
 
     [test3 clearModelInfo];
+
     NSLog(@"old dict %@", [test3 modelToDict]);
     NSLog(@"old json %@", [test3 modelToJson]);
 
     [test3 setValueForJson:@"{\"ff\":20.5,\"number\":10,\"inter\":30,\"boo\":true,\"str\":\"\"}"];
-    NSLog(@"old dict %@", [test3 modelToDict]);
+    NSLog(@"old test3 dict %@", [test3 modelToDict]);
+    NSLog(@"old test3 json %@", [test3 modelToJson]);
 }
 
 - (void)didReceiveMemoryWarning {
