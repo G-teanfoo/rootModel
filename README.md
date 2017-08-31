@@ -24,8 +24,24 @@
 
 ### 导入
 #### 1， cocoapods
-	cocoapods 稍后更新
+先看看能不能搜索到
+
+	pod search CJRootModel
+如果搜索不到，估计需要更新下搜索库
+
+	pod repo update
+更新后
+
+	rm ~/Library/Caches/CocoaPods/search_index.json
+删除索引后重新搜索，就应该有了<br/>
+然后就可以引入到项目中
+
+	pod 'CJRootModel'
+
 #### 2， 手动引入
+
+	将项目下载下来
+	将项目中RootModel文件下的两个文件复制到项目中
 
 ### 用法
 ```
