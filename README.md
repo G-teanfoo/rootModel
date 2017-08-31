@@ -22,11 +22,12 @@
 大大简化了代码量，
 提供很多实用的方法进行操作
 
-### 用法
+### 导入
 #### 1， cocoapods
 	cocoapods 稍后更新
 #### 2， 手动引入
 
+### 用法
 ```
   0，创建一个model，继承于CJRootModel
   1，在.h文件中声明属性，例如 @property(nonatomic, copy)NSString *name;

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CJModel.h"
+#import "CJRootModel.h"
 
-@interface Test3Model : CJModel
+@interface Test3Model : CJRootModel
 
 /** string */
 @property (nonatomic, copy) NSString *str;

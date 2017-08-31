@@ -6,9 +6,9 @@
 //  Copyright © 2016年 chjsun. All rights reserved.
 //
 
-#import "CJModel.h"
+#import "CJRootModel.h"
 
-@interface Test2Model : CJModel
+@interface Test2Model : CJRootModel
 
 @property(nonatomic, copy)NSString *name;
 @property(nonatomic, copy)NSString *test;
