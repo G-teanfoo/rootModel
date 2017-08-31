@@ -6,16 +6,16 @@
 //  Copyright © 2016年 chjsun. All rights reserved.
 //
 
-#import "CJModel.h"
+#import "CJRootModel.h"
 #import <objc/runtime.h>
 
 static NSMutableDictionary *storagePool;
 
-@implementation CJModel
+@implementation CJRootModel
 
 + (id)shareModel{
 
-    CJModel *model;
+    CJRootModel *model;
     NSString *modelClass = NSStringFromClass([self class]);
     if (storagePool != nil && [storagePool objectForKey:modelClass]) {//首先判断缓存池或缓存池是否存在
         model = storagePool[modelClass];
@@ -54,12 +54,12 @@ static NSMutableDictionary *storagePool;
 //    return model;
 //}
 
-// //允许copy,程序员在使用时肯定知道copy的含义，不知道请去查，留这个接口是为了某些可能需要的特殊的业务
+// //允许copy,
 //- (id)copyWithZone:(NSZone *)zone{
 //    return model;
 //}
 //
-// //允许copy,程序员在使用时肯定知道mutable的含义，不知道请去查，留这个接口是为了某些可能需要的特殊的业务
+// //允许copy,
 //- (id)mutableCopyWithZone:(NSZone *)zone{
 //    return model;
 //}

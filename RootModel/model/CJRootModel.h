@@ -1,5 +1,5 @@
 //
-//  CJModel.h
+//  CJRootModel.h
 //
 //  Created by chjsun on 2016/12/9.
 //  Copyright © 2016年 chjsun. All rights reserved.
@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CJModel : NSObject
+@interface CJRootModel : NSObject
 /**
  *  通过此方法可以创建全局共享唯一模型返回model
  *  若想创建不是全局共享的model，请用init
